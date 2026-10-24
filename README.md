@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:1f6feb,100:00d4ff&height=200&section=header&text=DIAZ&fontSize=64&fontColor=ffffff&fontAlignY=38&desc=Full%20Stack&descAlignY=60&descSize=20" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:1f6feb,100:00d4ff&height=200&section=header&text=DIAZ&fontSize=64&fontColor=ffffff&fontAlignY=38&desc=Dev%20Full%20Stack&descAlignY=60&descSize=20" width="100%"/>
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1200&color=00D4FF&center=true&vCenter=true&width=600&lines=Intelig%C3%AAncia+e+OSINT;Seguran%C3%A7a+da+informa%C3%A7%C3%A3o;Seguran%C3%A7a+p%C3%BAblica;IoT+e+telemetria;Web+e+mobile;Automa%C3%A7%C3%A3o+e+IA" alt="Áreas" />
 
