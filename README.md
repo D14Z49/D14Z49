@@ -49,10 +49,10 @@
 
 <div align="center">
 
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=proteus49&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00d4ff&icon_color=1f6feb&locale=pt-br"/>
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=proteus49&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00d4ff&locale=pt-br"/>
+<img height="165" src="https://github-readme-stats.vercel.app/api?username=D14Z49&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00d4ff&icon_color=1f6feb&locale=pt-br"/>
+<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=D14Z49&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00d4ff&locale=pt-br"/>
 
-<img src="https://streak-stats.demolab.com?user=proteus49&theme=tokyonight&hide_border=true&background=0d1117&ring=00d4ff&fire=1f6feb&currStreakLabel=00d4ff&locale=pt_BR" width="49%"/>
+<img src="https://streak-stats.demolab.com?user=D14Z49&theme=tokyonight&hide_border=true&background=0d1117&ring=00d4ff&fire=1f6feb&currStreakLabel=00d4ff&locale=pt_BR" width="49%"/>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00d4ff,50:1f6feb,100:0d1117&height=110&section=footer" width="100%"/>
 
