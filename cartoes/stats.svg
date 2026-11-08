@@ -8,7 +8,7 @@
 <rect x="0.5" y="0.5" rx="6" width="494" height="194" fill="#0d1117" stroke="#1f6feb" stroke-opacity="0.35"/>
 <text x="24" y="36" class="t">Atividade no GitHub</text>
 <circle cx="30" cy="69" r="4" fill="#1f6feb"/><text x="44" y="74" class="l">Repositórios</text><text x="471" y="74" class="v" text-anchor="end">21  (19 privados)</text>
-<circle cx="30" cy="97" r="4" fill="#1f6feb"/><text x="44" y="102" class="l">Commits nos últimos 12 meses</text><text x="471" y="102" class="v" text-anchor="end">308</text>
+<circle cx="30" cy="97" r="4" fill="#1f6feb"/><text x="44" y="102" class="l">Commits nos últimos 12 meses</text><text x="471" y="102" class="v" text-anchor="end">309</text>
 <circle cx="30" cy="125" r="4" fill="#1f6feb"/><text x="44" y="130" class="l">Projetos ativos no último ano</text><text x="471" y="130" class="v" text-anchor="end">20</text>
 <circle cx="30" cy="153" r="4" fill="#1f6feb"/><text x="44" y="158" class="l">No GitHub desde</text><text x="471" y="158" class="v" text-anchor="end">2025</text>
 <text x="471" y="183" class="m" text-anchor="end">atualizado em 08/11/2026</text>

@@ -56,7 +56,7 @@
 <img height="165" src="./cartoes/stats.svg" alt="Atividade no GitHub"/>
 <img height="165" src="./cartoes/linguagens.svg" alt="Linguagens mais usadas"/>
 
-<img src="https://streak-stats.demolab.com?user=D14Z49&theme=tokyonight&hide_border=true&background=0d1117&ring=00d4ff&fire=1f6feb&currStreakLabel=00d4ff&locale=pt_BR" width="49%"/>
+<img height="165" src="./cartoes/sequencia.svg" alt="Sequência de commits"/>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00d4ff,50:1f6feb,100:0d1117&height=110&section=footer" width="100%"/>
 

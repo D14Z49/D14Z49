@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Gera os cartões de estatísticas do README do perfil (stats.svg e linguagens.svg).
+"""Gera os cartões de estatísticas do README do perfil (stats.svg, linguagens.svg e sequencia.svg).
 
-Substitui o github-readme-stats.vercel.app, que foi pausado. Roda uma vez por dia no servidor com um token
+Substitui o github-readme-stats.vercel.app (pausado) e o streak-stats, que só enxerga contribuições públicas. Roda uma vez por dia no servidor com um token
 somente leitura. Os cartões mostram só totais: nenhum nome de repositório privado sai daqui.
 
 Uso: GITHUB_TOKEN_FILE=/root/.config/github-leitura.token python3 tools/cartoes.py [pasta_de_saida]
@@ -51,6 +51,47 @@ def _count(url: str, token: str) -> int:
     return int(m.group(1)) if m else len(data)
 
 
+BRT = timezone(timedelta(hours=-3))
+
+
+def _commit_days(full_name: str, token: str) -> set:
+    """Dates (Brasília time) of every commit by USER in the repository."""
+    days, page = set(), 1
+    while True:
+        try:
+            batch, _ = _get(f"/repos/{full_name}/commits?author={USER}&per_page=100&page={page}", token)
+        except urllib.error.HTTPError as e:
+            if e.code == 409:  # empty repository
+                return days
+            raise
+        for c in batch:
+            when = datetime.fromisoformat(c["commit"]["author"]["date"].replace("Z", "+00:00"))
+            days.add(when.astimezone(BRT).date().isoformat())
+        if len(batch) < 100:
+            return days
+        page += 1
+
+
+def streaks(days: list, today) -> dict:
+    """Current streak (ends today or yesterday), longest streak and their date ranges."""
+    ds = sorted({datetime.fromisoformat(d).date() for d in days})
+    longest, runs, start = (0, None, None), [], None
+    for i, d in enumerate(ds):
+        if i == 0 or (d - ds[i - 1]).days != 1:
+            start = d
+        if i == len(ds) - 1 or (ds[i + 1] - d).days != 1:
+            runs.append((start, d))
+    for a, b in runs:
+        n = (b - a).days + 1
+        if n > longest[0]:
+            longest = (n, a, b)
+    current = (0, None, None)
+    if runs and (today - runs[-1][1]).days <= 1:
+        a, b = runs[-1]
+        current = ((b - a).days + 1, a, b)
+    return {"total_days": len(ds), "first": ds[0] if ds else None, "current": current, "longest": longest}
+
+
 def collect(token: str) -> dict:
     repos, page = [], 1
     while True:
@@ -61,9 +102,10 @@ def collect(token: str) -> dict:
         page += 1
     own = [r for r in repos if not r["fork"] and r["owner"]["login"] == USER]
     since = (datetime.now(timezone.utc) - timedelta(days=365)).strftime("%Y-%m-%dT%H:%M:%SZ")
-    commits, langs = 0, {}
+    commits, langs, days = 0, {}, set()
     for r in own:
         commits += _count(f"/repos/{r['full_name']}/commits?since={since}", token)
+        days |= _commit_days(r["full_name"], token)
         data, _ = _get(f"/repos/{r['full_name']}/languages", token)
         for lang, size in data.items():
             if lang not in SKIP_LANGS:
@@ -76,6 +118,7 @@ def collect(token: str) -> dict:
         "active_repos": sum(1 for r in own if r["pushed_at"] >= since),
         "since_year": user["created_at"][:4],
         "langs": sorted(langs.items(), key=lambda kv: -kv[1]),
+        "days": sorted(days),
     }
 
 
@@ -129,15 +172,48 @@ def langs_svg(s: dict, updated: str) -> str:
     return _frame(width, 195, "Linguagens mais usadas", body)
 
 
+MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
+
+
+def _d(d) -> str:
+    return f"{d.day} {MESES[d.month - 1]} {d.year}" if d else "—"
+
+
+def _span(a, b) -> str:
+    if not a:
+        return "—"
+    return _d(a) if a == b else f"{_d(a)} – {_d(b)}"
+
+
+def streak_svg(s: dict, updated: str) -> str:
+    st = streaks(s["days"], datetime.now(BRT).date())
+    cols = [(82, str(st["total_days"]), "Dias com commit", f"desde {_d(st['first'])}"),
+            (247, str(st["current"][0]), "Sequência atual", _span(*st["current"][1:])),
+            (412, str(st["longest"][0]), "Maior sequência", _span(*st["longest"][1:]))]
+    body = (f'<line x1="165" y1="58" x2="165" y2="160" stroke="{BORDER}" stroke-opacity="0.35"/>'
+            f'<line x1="330" y1="58" x2="330" y2="160" stroke="{BORDER}" stroke-opacity="0.35"/>\n')
+    for x, value, label, sub in cols:
+        big = TITLE if label == "Sequência atual" else TEXT
+        body += (f'<text x="{x}" y="104" text-anchor="middle" style="font:700 32px \'Segoe UI\',Ubuntu,sans-serif;fill:{big}">{value}</text>'
+                 f'<text x="{x}" y="130" class="l" text-anchor="middle">{escape(label)}</text>'
+                 f'<text x="{x}" y="150" class="m" text-anchor="middle">{escape(sub)}</text>\n')
+    body += f'<text x="471" y="183" class="m" text-anchor="end">atualizado em {updated}</text>'
+    return _frame(495, 195, "Sequência de commits", body)
+
+
 def main():
     out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), "..", "cartoes")
     os.makedirs(out, exist_ok=True)
     s = collect(_token())
     updated = datetime.now(timezone(timedelta(hours=-3))).strftime("%d/%m/%Y")
-    for name, svg in (("stats.svg", stats_svg(s, updated)), ("linguagens.svg", langs_svg(s, updated))):
+    cards = (("stats.svg", stats_svg(s, updated)), ("linguagens.svg", langs_svg(s, updated)),
+             ("sequencia.svg", streak_svg(s, updated)))
+    for name, svg in cards:
         with open(os.path.join(out, name), "w") as f:
             f.write(svg)
-    print(json.dumps({k: v for k, v in s.items() if k != "langs"} | {"langs": s["langs"][:6]}, ensure_ascii=False))
+    st = streaks(s["days"], datetime.now(BRT).date())
+    print(json.dumps({k: v for k, v in s.items() if k not in ("langs", "days")} | {"langs": s["langs"][:6]}
+                     | {"dias": st["total_days"], "atual": st["current"][0], "maior": st["longest"][0]}, ensure_ascii=False, default=str))
 
 
 if __name__ == "__main__":
