@@ -8,8 +8,8 @@
 <rect x="0.5" y="0.5" rx="6" width="494" height="194" fill="#0d1117" stroke="#1f6feb" stroke-opacity="0.35"/>
 <text x="24" y="36" class="t">Sequência de commits</text>
 <line x1="165" y1="58" x2="165" y2="160" stroke="#1f6feb" stroke-opacity="0.35"/><line x1="330" y1="58" x2="330" y2="160" stroke="#1f6feb" stroke-opacity="0.35"/>
-<text x="82" y="104" text-anchor="middle" style="font:700 32px 'Segoe UI',Ubuntu,sans-serif;fill:#c9d1d9">29</text><text x="82" y="130" class="l" text-anchor="middle">Dias com commit</text><text x="82" y="150" class="m" text-anchor="middle">desde 14 mai 2025</text>
-<text x="247" y="104" text-anchor="middle" style="font:700 32px 'Segoe UI',Ubuntu,sans-serif;fill:#00d4ff">7</text><text x="247" y="130" class="l" text-anchor="middle">Sequência atual</text><text x="247" y="150" class="m" text-anchor="middle">4 nov 2026 – 10 nov 2026</text>
+<text x="82" y="104" text-anchor="middle" style="font:700 32px 'Segoe UI',Ubuntu,sans-serif;fill:#c9d1d9">30</text><text x="82" y="130" class="l" text-anchor="middle">Dias com commit</text><text x="82" y="150" class="m" text-anchor="middle">desde 14 mai 2025</text>
+<text x="247" y="104" text-anchor="middle" style="font:700 32px 'Segoe UI',Ubuntu,sans-serif;fill:#00d4ff">8</text><text x="247" y="130" class="l" text-anchor="middle">Sequência atual</text><text x="247" y="150" class="m" text-anchor="middle">4 nov 2026 – 11 nov 2026</text>
 <text x="412" y="104" text-anchor="middle" style="font:700 32px 'Segoe UI',Ubuntu,sans-serif;fill:#c9d1d9">9</text><text x="412" y="130" class="l" text-anchor="middle">Maior sequência</text><text x="412" y="150" class="m" text-anchor="middle">9 out 2026 – 17 out 2026</text>
-<text x="471" y="183" class="m" text-anchor="end">atualizado em 11/11/2026</text>
+<text x="471" y="183" class="m" text-anchor="end">atualizado em 12/11/2026</text>
 </svg>
