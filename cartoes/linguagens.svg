@@ -7,12 +7,12 @@
 </style>
 <rect x="0.5" y="0.5" rx="6" width="299" height="194" fill="#0d1117" stroke="#1f6feb" stroke-opacity="0.35"/>
 <text x="24" y="36" class="t">Linguagens mais usadas</text>
-<clipPath id="c"><rect x="24" y="52" width="252" height="8" rx="4"/></clipPath><g clip-path="url(#c)"><rect x="24.00" y="52" width="146.45" height="8" fill="#3572A5"/><rect x="169.95" y="52" width="72.72" height="8" fill="#3178c6"/><rect x="242.17" y="52" width="17.52" height="8" fill="#4F5D95"/><rect x="259.19" y="52" width="13.42" height="8" fill="#f1e05a"/><rect x="272.11" y="52" width="3.05" height="8" fill="#89e051"/><rect x="274.66" y="52" width="1.84" height="8" fill="#8b949e"/></g>
+<clipPath id="c"><rect x="24" y="52" width="252" height="8" rx="4"/></clipPath><g clip-path="url(#c)"><rect x="24.00" y="52" width="146.46" height="8" fill="#3572A5"/><rect x="169.96" y="52" width="72.72" height="8" fill="#3178c6"/><rect x="242.18" y="52" width="17.52" height="8" fill="#4F5D95"/><rect x="259.19" y="52" width="13.41" height="8" fill="#f1e05a"/><rect x="272.11" y="52" width="3.05" height="8" fill="#89e051"/><rect x="274.66" y="52" width="1.84" height="8" fill="#8b949e"/></g>
 <circle cx="29" cy="84" r="5" fill="#3572A5"/><text x="40" y="88" class="l">Python <tspan class="m">57,9%</tspan></text>
 <circle cx="161" cy="84" r="5" fill="#3178c6"/><text x="172" y="88" class="l">TypeScript <tspan class="m">28,7%</tspan></text>
 <circle cx="29" cy="110" r="5" fill="#4F5D95"/><text x="40" y="114" class="l">PHP <tspan class="m">6,8%</tspan></text>
 <circle cx="161" cy="110" r="5" fill="#f1e05a"/><text x="172" y="114" class="l">JavaScript <tspan class="m">5,1%</tspan></text>
 <circle cx="29" cy="136" r="5" fill="#89e051"/><text x="40" y="140" class="l">Shell <tspan class="m">1,0%</tspan></text>
 <circle cx="161" cy="136" r="5" fill="#8b949e"/><text x="172" y="140" class="l">PLpgSQL <tspan class="m">0,5%</tspan></text>
-<text x="276" y="183" class="m" text-anchor="end">atualizado em 23/11/2026</text>
+<text x="276" y="183" class="m" text-anchor="end">atualizado em 24/11/2026</text>
 </svg>
